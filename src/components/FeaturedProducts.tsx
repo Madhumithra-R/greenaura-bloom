@@ -1,26 +1,20 @@
 import { motion } from "framer-motion";
-import plant1 from "@/assets/plant-1.jpg";
-import plant2 from "@/assets/plant-2.jpg";
-import plant3 from "@/assets/plant-3.jpg";
-import plant4 from "@/assets/plant-4.jpg";
-import plant5 from "@/assets/plant-5.jpg";
-import plant6 from "@/assets/plant-6.jpg";
+import productBird from "@/assets/product-bird-of-paradise.jpg";
+import productFicus from "@/assets/product-ficus.jpg";
+import productOlive from "@/assets/product-olive.jpg";
 
 const products = [
-  { name: "Desert Rose Succulent", price: "$24", image: plant1 },
-  { name: "Fiddle Leaf Fig", price: "$68", image: plant2 },
-  { name: "Snake Plant", price: "$42", image: plant3 },
-  { name: "Golden Pothos", price: "$32", image: plant4 },
-  { name: "Peace Lily", price: "$38", image: plant5 },
-  { name: "Rubber Plant", price: "$56", image: plant6 },
+  { name: "Bird of Paradise", category: "Tropical", price: "$210", image: productBird },
+  { name: "Ficus Elastica", category: "Tree", price: "$160", image: productFicus },
+  { name: "Olea Europaea", category: "Mediterranean", price: "$285", image: productOlive },
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 50 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: "easeOut" },
+    transition: { duration: 0.7, delay: i * 0.15, ease: "easeOut" },
   }),
 };
 
@@ -34,11 +28,15 @@ const FeaturedProducts = () => (
         transition={{ duration: 0.6 }}
         className="mb-16 text-center"
       >
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-accent">Curated Selection</p>
-        <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">Featured Plants</h2>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-accent">
+          Curated Selection
+        </p>
+        <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+          Featured Plants
+        </h2>
       </motion.div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product, i) => (
           <motion.div
             key={product.name}
@@ -47,22 +45,28 @@ const FeaturedProducts = () => (
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            whileHover={{ y: -8 }}
-            className="group cursor-pointer overflow-hidden rounded-2xl bg-card transition-shadow hover:shadow-2xl"
+            whileHover={{ y: -10, scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="group cursor-pointer overflow-hidden rounded-2xl bg-card shadow-sm transition-shadow duration-500 hover:shadow-2xl"
           >
-            <div className="overflow-hidden">
+            <div className="overflow-hidden bg-muted">
               <img
                 src={product.image}
                 alt={product.name}
                 loading="lazy"
                 width={800}
-                height={800}
-                className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                height={1024}
+                className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
             <div className="p-6">
-              <h3 className="text-lg font-semibold text-foreground">{product.name}</h3>
-              <p className="mt-1 text-sm font-medium text-accent">{product.price}</p>
+              <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+                {product.category}
+              </span>
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-foreground">{product.name}</h3>
+                <p className="text-lg font-semibold text-foreground">{product.price}</p>
+              </div>
             </div>
           </motion.div>
         ))}

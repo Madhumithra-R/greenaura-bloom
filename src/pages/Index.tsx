@@ -5,6 +5,7 @@ import BrandStory from "@/components/BrandStory";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
 import CallToAction from "@/components/CallToAction";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Index = () => (
@@ -16,6 +17,7 @@ const Index = () => (
     <WhyChooseUs />
     <Testimonials />
     <CallToAction />
+    <ContactSection />
     <Footer />
   </div>
 );

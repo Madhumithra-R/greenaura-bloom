@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Leaf, Truck, ShieldCheck, HeartHandshake } from "lucide-react";
+import { Sprout, HeartHandshake, ShieldCheck, Truck } from "lucide-react";
 
 const benefits = [
-  { icon: Leaf, title: "Sustainably Grown", desc: "Every plant is sourced from eco-conscious, certified nurseries." },
-  { icon: Truck, title: "Free Shipping", desc: "Complimentary delivery on all orders over $75, nationwide." },
-  { icon: ShieldCheck, title: "30-Day Guarantee", desc: "Not thriving? We'll replace it — no questions asked." },
-  { icon: HeartHandshake, title: "Expert Care Guides", desc: "Detailed care instructions included with every plant." },
+  { icon: Sprout, title: "Master Cultivated", desc: "Every plant raised by expert horticulturists with decades of experience." },
+  { icon: HeartHandshake, title: "Lifetime Support", desc: "Free ongoing care advice from our plant specialists, forever." },
+  { icon: ShieldCheck, title: "Pristine Health Guarantee", desc: "If it doesn't thrive, we replace it — no questions asked." },
+  { icon: Truck, title: "White Glove Delivery", desc: "Carefully packaged and hand-delivered to your doorstep." },
 ];
 
 const WhyChooseUs = () => (
@@ -16,27 +16,35 @@ const WhyChooseUs = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-16 text-center"
+        className="mb-20 text-center"
       >
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-primary-foreground/60">Why GreenAura</p>
-        <h2 className="text-4xl font-bold tracking-tight text-primary-foreground md:text-5xl">The GreenAura Difference</h2>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-primary-foreground/60">
+          The GreenAura Standard
+        </p>
+        <h2 className="text-4xl font-bold tracking-tight text-primary-foreground md:text-5xl">
+          Uncompromising Quality
+        </h2>
       </motion.div>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         {benefits.map((b, i) => (
           <motion.div
             key={b.title}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="text-center"
+            transition={{ duration: 0.5, delay: i * 0.12 }}
+            className="group text-center"
           >
-            <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-foreground/10">
-              <b.icon className="h-7 w-7 text-primary-foreground" />
-            </div>
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full border border-primary-foreground/20 bg-primary-foreground/10 transition-colors group-hover:bg-primary-foreground/20"
+            >
+              <b.icon className="h-8 w-8 text-primary-foreground" strokeWidth={1.5} />
+            </motion.div>
             <h3 className="mb-2 text-lg font-semibold text-primary-foreground">{b.title}</h3>
-            <p className="text-sm leading-relaxed text-primary-foreground/70">{b.desc}</p>
+            <p className="text-sm leading-relaxed text-primary-foreground/60">{b.desc}</p>
           </motion.div>
         ))}
       </div>

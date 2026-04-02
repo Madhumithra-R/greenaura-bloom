@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import heroPlant from "@/assets/hero-plant.jpg";
+import heroBg from "@/assets/hero-greenhouse.jpg";
 
 const Hero = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -10,23 +10,25 @@ const Hero = () => {
 
   return (
     <section id="home" ref={ref} className="relative flex min-h-screen items-center overflow-hidden">
-      <motion.div style={{ y, opacity }} className="absolute inset-0 flex items-center justify-center">
+      {/* Parallax background */}
+      <motion.div style={{ y }} className="absolute inset-0">
         <img
-          src={heroPlant}
-          alt="Premium monstera plant in ceramic pot"
-          width={1024}
-          height={1280}
-          className="h-[70vh] w-auto object-contain opacity-20 lg:opacity-30"
+          src={heroBg}
+          alt="Lush greenhouse conservatory with tropical plants"
+          width={1920}
+          height={1080}
+          className="h-full w-full object-cover"
         />
+        <div className="absolute inset-0 bg-foreground/50" />
       </motion.div>
 
-      <div className="container relative z-10 mx-auto px-6 py-32 lg:px-12">
-        <div className="max-w-3xl">
+      <motion.div style={{ opacity }} className="container relative z-10 mx-auto px-6 py-32 lg:px-12">
+        <div className="mx-auto max-w-4xl text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-accent"
+            className="mb-6 text-sm font-semibold uppercase tracking-[0.4em] text-primary-foreground/70"
           >
             Premium Indoor Plants
           </motion.p>
@@ -35,18 +37,18 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight text-foreground md:text-7xl lg:text-8xl"
+            className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight text-primary-foreground md:text-7xl lg:text-8xl"
           >
-            Bring Nature
+            Breathe Life
             <br />
-            <span className="italic text-accent">Into Your Home</span>
+            <span className="italic">Into Your Space</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mb-10 max-w-lg text-lg leading-relaxed text-muted-foreground"
+            className="mx-auto mb-12 max-w-lg text-lg leading-relaxed text-primary-foreground/80"
           >
             Hand-selected, sustainably grown plants that transform any space into a living sanctuary. Delivered with care to your door.
           </motion.p>
@@ -55,23 +57,23 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap justify-center gap-4"
           >
             <a
               href="#shop"
-              className="rounded-full bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition-all hover:scale-105 hover:shadow-xl"
+              className="rounded-full bg-primary-foreground px-10 py-4 text-sm font-semibold uppercase tracking-wider text-foreground transition-all hover:scale-105 hover:shadow-xl"
             >
               Explore Collection
             </a>
             <a
               href="#story"
-              className="rounded-full border border-foreground/20 px-8 py-4 text-sm font-semibold text-foreground transition-all hover:border-foreground/40 hover:scale-105"
+              className="rounded-full border border-primary-foreground/40 px-10 py-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all hover:border-primary-foreground hover:scale-105"
             >
               Our Story
             </a>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

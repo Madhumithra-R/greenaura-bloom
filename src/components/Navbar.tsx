@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -36,7 +36,12 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-4 lg:px-12">
-        <button onClick={() => handleClick("#home")} className="font-heading text-2xl font-bold tracking-tight text-foreground">
+        <button
+          onClick={() => handleClick("#home")}
+          className={`font-heading text-2xl font-bold tracking-tight transition-colors ${
+            scrolled ? "text-foreground" : "text-primary-foreground"
+          }`}
+        >
           GreenAura
         </button>
 
@@ -45,14 +50,29 @@ const Navbar = () => {
             <button
               key={link.href}
               onClick={() => handleClick(link.href)}
-              className="text-sm font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground"
+              className={`text-xs font-semibold uppercase tracking-[0.15em] transition-colors ${
+                scrolled
+                  ? "text-muted-foreground hover:text-foreground"
+                  : "text-primary-foreground/70 hover:text-primary-foreground"
+              }`}
             >
               {link.label}
             </button>
           ))}
+
           <button
             onClick={() => handleClick("#shop")}
-            className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:scale-105 hover:shadow-lg"
+            className={`transition-colors ${
+              scrolled ? "text-foreground" : "text-primary-foreground"
+            }`}
+            aria-label="Cart"
+          >
+            <ShoppingBag size={20} />
+          </button>
+
+          <button
+            onClick={() => handleClick("#shop")}
+            className="rounded-full bg-primary px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-primary-foreground transition-all hover:scale-105 hover:shadow-lg"
           >
             Shop Now
           </button>
@@ -60,7 +80,9 @@ const Navbar = () => {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-foreground md:hidden"
+          className={`transition-colors md:hidden ${
+            scrolled ? "text-foreground" : "text-primary-foreground"
+          }`}
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -87,7 +109,7 @@ const Navbar = () => {
               ))}
               <button
                 onClick={() => handleClick("#shop")}
-                className="mt-2 rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-primary-foreground"
+                className="mt-2 rounded-full bg-primary px-6 py-3 text-center text-xs font-semibold uppercase tracking-wider text-primary-foreground"
               >
                 Shop Now
               </button>

@@ -18,12 +18,14 @@ const CallToAction = () => (
         <p className="mx-auto mb-10 max-w-md text-lg leading-relaxed text-primary-foreground/70">
           Join thousands of plant lovers who trust GreenAura for premium, sustainably grown indoor plants.
         </p>
-        <a
+        <motion.a
           href="#shop"
-          className="inline-block rounded-full bg-primary-foreground px-10 py-4 text-sm font-semibold text-primary transition-all hover:scale-105 hover:shadow-xl"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
+          className="inline-block rounded-full bg-primary-foreground px-10 py-4 text-sm font-semibold uppercase tracking-wider text-primary transition-shadow hover:shadow-xl"
         >
           Shop the Collection
-        </a>
+        </motion.a>
       </motion.div>
     </div>
   </section>
