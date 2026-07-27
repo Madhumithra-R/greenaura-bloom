@@ -29,7 +29,9 @@ const ContactSection = () => {
     }
     setErrors({});
     setSending(true);
-    const { error } = await supabase.from("contact_messages").insert(result.data);
+    const { name, email, message } = result.data;
+    const { error } = await supabase.from("contact_messages").insert({ name, email, message });
+
     setSending(false);
     if (error) {
       toast({ title: "Could not send message", description: error.message, variant: "destructive" });
