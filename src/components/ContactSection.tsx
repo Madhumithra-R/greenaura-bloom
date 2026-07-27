@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -12,9 +13,10 @@ const contactSchema = z.object({
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sending, setSending] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = contactSchema.safeParse(form);
     if (!result.success) {
@@ -26,9 +28,17 @@ const ContactSection = () => {
       return;
     }
     setErrors({});
+    setSending(true);
+    const { error } = await supabase.from("contact_messages").insert(result.data);
+    setSending(false);
+    if (error) {
+      toast({ title: "Could not send message", description: error.message, variant: "destructive" });
+      return;
+    }
     toast({ title: "Message sent!", description: "We'll get back to you shortly." });
     setForm({ name: "", email: "", message: "" });
   };
+
 
   return (
     <section id="contact" className="py-24 lg:py-32">
