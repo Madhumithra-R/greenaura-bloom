@@ -61,7 +61,7 @@ const FeaturedProducts = () => {
                 onClick={() => navigate("/shop")}
                 className="group cursor-pointer overflow-hidden rounded-2xl bg-card shadow-sm transition-shadow duration-500 hover:shadow-2xl"
               >
-                <div className="overflow-hidden bg-muted">
+                <div className="relative overflow-hidden bg-muted">
                   <img
                     src={productImage(product.image_url)}
                     alt={product.name}
@@ -70,6 +70,7 @@ const FeaturedProducts = () => {
                     height={1024}
                     className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
+                  <SaveButton productId={product.id} className="absolute right-4 top-4" />
                 </div>
                 <div className="p-6">
                   <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent">
