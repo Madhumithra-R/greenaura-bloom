@@ -175,6 +175,9 @@ const Navbar = () => {
                 </button>
               ))}
               <button onClick={() => goRoute("/shop")} className="text-left text-lg font-medium text-foreground">Shop</button>
+              <button onClick={() => goRoute("/wishlist")} className="text-left text-lg font-medium text-foreground">
+                Wishlist{wishlistCount > 0 ? ` (${wishlistCount})` : ""}
+              </button>
               <button onClick={() => goRoute("/cart")} className="text-left text-lg font-medium text-foreground">
                 Cart{count > 0 ? ` (${count})` : ""}
               </button>
