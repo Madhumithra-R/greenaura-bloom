@@ -24,7 +24,7 @@ const FeaturedProducts = () => {
         .select("*")
         .eq("featured", true)
         .order("created_at")
-        .limit(3);
+        .limit(6);
       if (error) throw error;
       return data as Product[];
     },
