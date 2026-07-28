@@ -100,6 +100,19 @@ const Navbar = () => {
           )}
 
           <button
+            onClick={() => goRoute("/wishlist")}
+            className={`relative transition-colors ${solid ? "text-foreground" : "text-primary-foreground"}`}
+            aria-label="Wishlist"
+          >
+            <Heart size={20} />
+            {wishlistCount > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-bold text-accent-foreground">
+                {wishlistCount}
+              </span>
+            )}
+          </button>
+
+          <button
             onClick={() => goRoute("/cart")}
             className={`relative transition-colors ${solid ? "text-foreground" : "text-primary-foreground"}`}
             aria-label="Cart"
