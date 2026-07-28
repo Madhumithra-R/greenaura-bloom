@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import Auth from "./pages/Auth.tsx";
 import Shop from "./pages/Shop.tsx";
 import Cart from "./pages/Cart.tsx";
+import Wishlist from "./pages/Wishlist.tsx";
 import Orders from "./pages/Orders.tsx";
 import Admin from "./pages/Admin.tsx";
 import NotFound from "./pages/NotFound.tsx";
