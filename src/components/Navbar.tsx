@@ -19,6 +19,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { user, isAdmin, signOut } = useAuth();
   const { count } = useCart();
+  const { count: wishlistCount } = useWishlist();
 
   const isHome = location.pathname === "/";
   const solid = scrolled || !isHome;
