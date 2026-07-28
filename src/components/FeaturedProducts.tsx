@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { formatPrice, productImage, type Product } from "@/lib/catalog";
+import SaveButton from "@/components/SaveButton";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
