@@ -1,3 +1,24 @@
+import { Link } from "react-router-dom";
+import { Instagram, Facebook, Twitter, type LucideIcon } from "lucide-react";
+
+const PinterestIcon: LucideIcon = ((props) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.237 2.636 7.855 6.356 9.312-.088-.79-.167-2.005.035-2.868.182-.78 1.174-4.97 1.174-4.97s-.3-.6-.3-1.487c0-1.394.808-2.435 1.814-2.435.855 0 1.268.642 1.268 1.412 0 .86-.548 2.145-.83 3.337-.236.998.5 1.812 1.485 1.812 1.782 0 3.152-1.879 3.152-4.59 0-2.4-1.725-4.078-4.188-4.078-2.853 0-4.528 2.14-4.528 4.352 0 .862.332 1.786.746 2.288a.3.3 0 0 1 .07.288c-.076.317-.246.998-.28 1.137-.043.183-.145.222-.335.134-1.25-.582-2.03-2.41-2.03-3.878 0-3.157 2.294-6.056 6.614-6.056 3.472 0 6.17 2.474 6.17 5.78 0 3.45-2.175 6.226-5.195 6.226-1.014 0-1.968-.527-2.294-1.15l-.624 2.38c-.226.87-.836 1.96-1.244 2.625.937.29 1.933.446 2.964.446 5.523 0 10-4.477 10-10S17.523 2 12 2Z" />
+  </svg>
+)) as unknown as LucideIcon;
+
+const socials = [
+  { label: "Instagram", href: "https://www.instagram.com/", Icon: Instagram },
+  { label: "Pinterest", href: "https://www.pinterest.com/", Icon: PinterestIcon },
+  { label: "Facebook", href: "https://www.facebook.com/", Icon: Facebook },
+  { label: "Twitter", href: "https://twitter.com/", Icon: Twitter },
+];
+
 const Footer = () => (
   <footer id="contact" className="border-t border-border py-16">
     <div className="container mx-auto px-6 lg:px-12">
@@ -11,19 +32,29 @@ const Footer = () => (
         <div>
           <h4 className="mb-4 text-sm font-semibold uppercase tracking-widest text-foreground">Quick Links</h4>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li><a href="#home" className="transition-colors hover:text-foreground">Home</a></li>
-            <li><a href="#shop" className="transition-colors hover:text-foreground">Shop</a></li>
-            <li><a href="#story" className="transition-colors hover:text-foreground">Our Story</a></li>
-            <li><a href="#contact" className="transition-colors hover:text-foreground">Contact</a></li>
+            <li><Link to="/" className="transition-colors hover:text-foreground">Home</Link></li>
+            <li><Link to="/shop" className="transition-colors hover:text-foreground">Shop</Link></li>
+            <li><Link to="/#story" className="transition-colors hover:text-foreground">Our Story</Link></li>
+            <li><Link to="/#contact" className="transition-colors hover:text-foreground">Contact</Link></li>
           </ul>
         </div>
         <div>
           <h4 className="mb-4 text-sm font-semibold uppercase tracking-widest text-foreground">Follow Us</h4>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li><a href="#" className="transition-colors hover:text-foreground">Instagram</a></li>
-            <li><a href="#" className="transition-colors hover:text-foreground">Pinterest</a></li>
-            <li><a href="#" className="transition-colors hover:text-foreground">Facebook</a></li>
-            <li><a href="#" className="transition-colors hover:text-foreground">Twitter</a></li>
+            {socials.map(({ label, href, Icon }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`GreenAura on ${label}`}
+                  className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
+                >
+                  <Icon size={16} aria-hidden="true" />
+                  {label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
