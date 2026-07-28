@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SaveButton from "@/components/SaveButton";
 import { supabase } from "@/integrations/supabase/client";
 import { formatPrice, productImage, type Product } from "@/lib/catalog";
 import { useCart } from "@/hooks/useCart";
@@ -68,13 +69,14 @@ const Shop = () => {
                   transition={{ duration: 0.5, delay: Math.min(i * 0.08, 0.4) }}
                   className="group flex flex-col overflow-hidden rounded-2xl bg-card shadow-sm transition-shadow hover:shadow-2xl"
                 >
-                  <div className="overflow-hidden bg-muted">
+                  <div className="relative overflow-hidden bg-muted">
                     <img
                       src={productImage(product.image_url)}
                       alt={product.name}
                       loading="lazy"
                       className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
+                    <SaveButton productId={product.id} className="absolute right-4 top-4" />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <span className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">

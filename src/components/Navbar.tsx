@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingBag, User } from "lucide-react";
+import { Menu, X, ShoppingBag, User, Heart } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
+import { useWishlist } from "@/hooks/useWishlist";
 
 const sectionLinks = [
   { label: "Home", href: "#home" },
@@ -18,6 +19,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { user, isAdmin, signOut } = useAuth();
   const { count } = useCart();
+  const { count: wishlistCount } = useWishlist();
 
   const isHome = location.pathname === "/";
   const solid = scrolled || !isHome;
@@ -100,6 +102,19 @@ const Navbar = () => {
           )}
 
           <button
+            onClick={() => goRoute("/wishlist")}
+            className={`relative transition-colors ${solid ? "text-foreground" : "text-primary-foreground"}`}
+            aria-label="Wishlist"
+          >
+            <Heart size={20} />
+            {wishlistCount > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-bold text-accent-foreground">
+                {wishlistCount}
+              </span>
+            )}
+          </button>
+
+          <button
             onClick={() => goRoute("/cart")}
             className={`relative transition-colors ${solid ? "text-foreground" : "text-primary-foreground"}`}
             aria-label="Cart"
@@ -160,6 +175,9 @@ const Navbar = () => {
                 </button>
               ))}
               <button onClick={() => goRoute("/shop")} className="text-left text-lg font-medium text-foreground">Shop</button>
+              <button onClick={() => goRoute("/wishlist")} className="text-left text-lg font-medium text-foreground">
+                Wishlist{wishlistCount > 0 ? ` (${wishlistCount})` : ""}
+              </button>
               <button onClick={() => goRoute("/cart")} className="text-left text-lg font-medium text-foreground">
                 Cart{count > 0 ? ` (${count})` : ""}
               </button>
