@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SaveButton from "@/components/SaveButton";
 import { supabase } from "@/integrations/supabase/client";
 import { formatPrice, productImage, type Product } from "@/lib/catalog";
 import { useCart } from "@/hooks/useCart";
