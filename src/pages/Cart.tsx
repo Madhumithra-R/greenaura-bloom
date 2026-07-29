@@ -34,26 +34,13 @@ const Cart = () => {
     if (!user || items.length === 0) return;
     setPlacing(true);
     try {
-      const { data: order, error: orderError } = await supabase
-        .from("orders")
-        .insert({ user_id: user.id, total_cents: totalCents, shipping_address: parsed.data, status: "pending" })
-        .select("id")
-        .single();
-      if (orderError) throw orderError;
+      const { error: rpcError } = await supabase.rpc("place_order", {
+        _shipping_address: parsed.data,
+      });
+      if (rpcError) throw rpcError;
 
-      const { error: itemsError } = await supabase.from("order_items").insert(
-        items.map((row) => ({
-          order_id: order.id,
-          product_id: row.product_id,
-          product_name: row.products.name,
-          unit_price_cents: row.products.price_cents,
-          quantity: row.quantity,
-        })),
-      );
-      if (itemsError) throw itemsError;
-
-      await supabase.from("cart_items").delete().eq("user_id", user.id);
       invalidate();
+
       toast({ title: "Order placed!", description: "We'll start potting it up right away." });
       navigate("/orders");
     } catch (err) {
