@@ -1,0 +1,13 @@
+UPDATE public.products SET image_url = 'plant-rhaphidophora' WHERE name = 'Rhaphidophora Tetrasperma';
+UPDATE public.products SET image_url = 'plant-zz' WHERE name = 'ZZ Plant';
+UPDATE public.products SET image_url = 'plant-cast-iron' WHERE name = 'Cast Iron Plant';
+UPDATE public.products SET image_url = 'plant-aglaonema' WHERE name = 'Chinese Evergreen';
+UPDATE public.products SET image_url = 'plant-peace-lily' WHERE name = 'Peace Lily';
+UPDATE public.products SET image_url = 'plant-fiddle-leaf' WHERE name = 'Fiddle Leaf Fig';
+UPDATE public.products SET image_url = 'plant-kentia' WHERE name = 'Kentia Palm';
+UPDATE public.products SET image_url = 'plant-dracaena' WHERE name = 'Dracaena Marginata';
+UPDATE public.products SET image_url = 'plant-lemon' WHERE name = 'Dwarf Lemon Tree';
+UPDATE public.products SET image_url = 'plant-rosemary' WHERE name = 'Rosemary Topiary';
+UPDATE public.products SET image_url = 'plant-echeveria' WHERE name = 'Echeveria Cluster';
+UPDATE public.products SET image_url = 'plant-string-of-pearls' WHERE name = 'String of Pearls';
+UPDATE public.products SET image_url = 'plant-pothos' WHERE name = 'Golden Pothos';
