@@ -141,37 +141,52 @@ export type Database = {
       }
       products: {
         Row: {
+          care_notes: string
           category: string
           created_at: string
           description: string
+          difficulty: string
           featured: boolean
           id: string
           image_url: string | null
+          light: string
+          mature_size: string
           name: string
           price_cents: number
           stock: number
+          water: string
         }
         Insert: {
+          care_notes?: string
           category?: string
           created_at?: string
           description?: string
+          difficulty?: string
           featured?: boolean
           id?: string
           image_url?: string | null
+          light?: string
+          mature_size?: string
           name: string
           price_cents?: number
           stock?: number
+          water?: string
         }
         Update: {
+          care_notes?: string
           category?: string
           created_at?: string
           description?: string
+          difficulty?: string
           featured?: boolean
           id?: string
           image_url?: string | null
+          light?: string
+          mature_size?: string
           name?: string
           price_cents?: number
           stock?: number
+          water?: string
         }
         Relationships: []
       }
@@ -252,6 +267,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      place_order: { Args: { _shipping_address: string }; Returns: string }
     }
     Enums: {
       app_role: "admin" | "user"
