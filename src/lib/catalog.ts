@@ -65,4 +65,9 @@ export type Product = {
   image_url: string | null;
   stock: number;
   featured: boolean;
+  light: string;
+  water: string;
+  difficulty: string;
+  mature_size: string;
+  care_notes: string;
 };
