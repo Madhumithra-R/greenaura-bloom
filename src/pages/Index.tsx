@@ -7,6 +7,7 @@ import Testimonials from "@/components/Testimonials";
 import CallToAction from "@/components/CallToAction";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import PlantAssistant from "@/components/PlantAssistant";
 
 const Index = () => (
   <div className="min-h-screen">
@@ -19,6 +20,7 @@ const Index = () => (
     <CallToAction />
     <ContactSection />
     <Footer />
+    <PlantAssistant />
   </div>
 );
 
