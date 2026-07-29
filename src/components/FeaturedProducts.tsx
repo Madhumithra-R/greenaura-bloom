@@ -59,7 +59,7 @@ const FeaturedProducts = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ y: -10, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                onClick={() => navigate("/shop")}
+                onClick={() => navigate(`/product/${product.id}`)}
                 className="group cursor-pointer overflow-hidden rounded-2xl bg-card shadow-sm transition-shadow duration-500 hover:shadow-2xl"
               >
                 <div className="relative overflow-hidden bg-muted">
