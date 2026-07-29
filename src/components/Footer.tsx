@@ -13,42 +13,43 @@ const PinterestIcon: LucideIcon = ((props) => (
 )) as unknown as LucideIcon;
 
 const socials = [
-  { label: "Instagram", href: "https://www.instagram.com/", Icon: Instagram },
-  { label: "Pinterest", href: "https://www.pinterest.com/", Icon: PinterestIcon },
-  { label: "Facebook", href: "https://www.facebook.com/", Icon: Facebook },
-  { label: "Twitter", href: "https://twitter.com/", Icon: Twitter },
+  { label: "Instagram", href: "https://www.instagram.com/", Icon: Instagram, color: "hover:text-[#E1306C]" },
+  { label: "Pinterest", href: "https://www.pinterest.com/", Icon: PinterestIcon, color: "hover:text-[#E60023]" },
+  { label: "Facebook", href: "https://www.facebook.com/", Icon: Facebook, color: "hover:text-[#1877F2]" },
+  { label: "Twitter", href: "https://twitter.com/", Icon: Twitter, color: "hover:text-[#1DA1F2]" },
 ];
 
 const Footer = () => (
-  <footer id="contact" className="border-t border-border py-16">
-    <div className="container mx-auto px-6 lg:px-12">
+  <footer id="contact" className="bg-primary text-primary-foreground">
+    <div className="h-1 w-full bg-gradient-to-r from-sage via-olive to-sage" />
+    <div className="container mx-auto px-6 py-16 lg:px-12">
       <div className="grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <h3 className="mb-4 font-heading text-2xl font-bold text-foreground">GreenAura</h3>
-          <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+          <h3 className="mb-4 font-heading text-2xl font-bold text-primary-foreground">GreenAura</h3>
+          <p className="max-w-sm text-sm leading-relaxed text-primary-foreground/70">
             Premium indoor plants, sustainably sourced and delivered with care. Transforming spaces into living sanctuaries since 2020.
           </p>
         </div>
         <div>
-          <h4 className="mb-4 text-sm font-semibold uppercase tracking-widest text-foreground">Quick Links</h4>
-          <ul className="space-y-3 text-sm text-muted-foreground">
-            <li><Link to="/" className="transition-colors hover:text-foreground">Home</Link></li>
-            <li><Link to="/shop" className="transition-colors hover:text-foreground">Shop</Link></li>
-            <li><Link to="/#story" className="transition-colors hover:text-foreground">Our Story</Link></li>
-            <li><Link to="/#contact" className="transition-colors hover:text-foreground">Contact</Link></li>
+          <h4 className="mb-4 text-sm font-semibold uppercase tracking-widest text-sage">Quick Links</h4>
+          <ul className="space-y-3 text-sm text-primary-foreground/70">
+            <li><Link to="/" className="transition-colors hover:text-sage">Home</Link></li>
+            <li><Link to="/shop" className="transition-colors hover:text-sage">Shop</Link></li>
+            <li><Link to="/#story" className="transition-colors hover:text-sage">Our Story</Link></li>
+            <li><Link to="/#contact" className="transition-colors hover:text-sage">Contact</Link></li>
           </ul>
         </div>
         <div>
-          <h4 className="mb-4 text-sm font-semibold uppercase tracking-widest text-foreground">Follow Us</h4>
-          <ul className="space-y-3 text-sm text-muted-foreground">
-            {socials.map(({ label, href, Icon }) => (
+          <h4 className="mb-4 text-sm font-semibold uppercase tracking-widest text-sage">Follow Us</h4>
+          <ul className="space-y-3 text-sm text-primary-foreground/70">
+            {socials.map(({ label, href, Icon, color }) => (
               <li key={label}>
                 <a
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`GreenAura on ${label}`}
-                  className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
+                  className={`inline-flex items-center gap-2 transition-colors ${color}`}
                 >
                   <Icon size={16} aria-hidden="true" />
                   {label}
@@ -58,7 +59,7 @@ const Footer = () => (
           </ul>
         </div>
       </div>
-      <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
+      <div className="mt-12 border-t border-primary-foreground/15 pt-8 text-center text-sm text-primary-foreground/60">
         © {new Date().getFullYear()} GreenAura. All rights reserved.
       </div>
     </div>
