@@ -115,7 +115,7 @@ const PlantAssistant = () => {
                   }`}
                 >
                   {m.role === "assistant" ? (
-                    <div className="prose prose-sm max-w-none prose-p:my-1 prose-ul:my-1 prose-headings:my-1 text-foreground">
+                    <div className="space-y-2 [&_ul]:list-disc [&_ul]:pl-4 [&_ol]:list-decimal [&_ol]:pl-4 [&_strong]:font-semibold">
                       <ReactMarkdown>{m.content || "…"}</ReactMarkdown>
                     </div>
                   ) : (
