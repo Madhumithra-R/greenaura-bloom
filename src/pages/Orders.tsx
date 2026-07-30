@@ -24,7 +24,7 @@ const Orders = () => {
     if (!loading && !user) navigate("/auth?next=/orders", { replace: true });
   }, [loading, user, navigate]);
 
-  const { data: orders = [], isLoading } = useQuery({
+  const { data: orders = [], isLoading, error, refetch } = useQuery({
     queryKey: ["orders", user?.id],
     enabled: !!user,
     queryFn: async () => {
@@ -45,7 +45,20 @@ const Orders = () => {
 
         {isLoading ? (
           <p className="text-muted-foreground">Loading…</p>
+        ) : error ? (
+          <div className="rounded-2xl bg-destructive/10 p-12 text-center">
+            <p className="mb-6 text-destructive">
+              We couldn't load your orders right now. Please refresh and try again.
+            </p>
+            <button
+              onClick={() => refetch()}
+              className="rounded-full bg-primary px-8 py-3 text-xs font-semibold uppercase tracking-wider text-primary-foreground"
+            >
+              Retry
+            </button>
+          </div>
         ) : orders.length === 0 ? (
+
           <div className="rounded-2xl bg-muted p-12 text-center">
             <p className="mb-6 text-muted-foreground">No orders yet.</p>
             <button
