@@ -24,7 +24,7 @@ const Orders = () => {
     if (!loading && !user) navigate("/auth?next=/orders", { replace: true });
   }, [loading, user, navigate]);
 
-  const { data: orders = [], isLoading } = useQuery({
+  const { data: orders = [], isLoading, error, refetch } = useQuery({
     queryKey: ["orders", user?.id],
     enabled: !!user,
     queryFn: async () => {
