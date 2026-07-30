@@ -34,10 +34,18 @@ const Cart = () => {
     if (!user || items.length === 0) return;
     setPlacing(true);
     try {
-      const { error: rpcError } = await supabase.rpc("place_order", {
-        _shipping_address: parsed.data,
+      const { data, error: fnError } = await supabase.functions.invoke("place-order", {
+        body: { shipping_address: parsed.data },
       });
-      if (rpcError) throw rpcError;
+      if (fnError) {
+        const detail = await (fnError as { context?: Response }).context
+          ?.clone()
+          .json()
+          .catch(() => null);
+        throw new Error(detail?.error ?? "We couldn't place your order. Please try again.");
+      }
+      if (data?.error) throw new Error(data.error);
+
 
       invalidate();
 
